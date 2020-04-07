@@ -6,7 +6,7 @@
     <body>
 		<h1>
             <div ng-app="">
-              <p>Name : <input type="text" ng-model="name"></p>
+              <p>Name cm : <input type="text" ng-model="name"></p>
               <h1>Hello {{name}}</h1>
             </div>
 		</h1>
