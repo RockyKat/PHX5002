@@ -20,5 +20,7 @@ app.controller('MyCtrl1', ['$scope', 'UserFactory', function ($scope, UserFactor
     $scope.bla = 'bla from controller';
     UserFactory.get({}, function (userFactory) {
         $scope.firstname = userFactory.firstName;
+        $scope.lastname = userFactory.lastName;
+
     })
 }]);
