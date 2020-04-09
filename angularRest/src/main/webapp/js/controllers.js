@@ -16,11 +16,21 @@ app.run(function ($rootScope, $templateCache) {
 });
 
 
-app.controller('MyCtrl1', ['$scope', 'UserFactory', function ($scope, UserFactory) {
+app.controller('MyCtrl1', ['$scope', 'UserFactory', 
+	function ($scope, UserFactory) {
     $scope.bla = 'bla from controller';
     UserFactory.get({}, function (userFactory) {
         $scope.firstname = userFactory.firstName;
         $scope.lastname = userFactory.lastName;
 
     })
+}]);
+
+
+app.controller('SearchController', ['$scope', '$http',
+  function ($scope, $http) {
+    $http.get('js/data.json').then(function(response) {
+      $scope.artists = response.data;
+      $scope.artistOrder = 'name';
+  });
 }]);
