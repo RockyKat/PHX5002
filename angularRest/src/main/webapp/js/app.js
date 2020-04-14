@@ -9,9 +9,19 @@ var ngdemo = angular.module('ngdemo', [
 					'ngdemo.controllers']).
     config(['$routeProvider', function ($routeProvider) 
     	{
-        	$routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-        	$routeProvider.when('/search'     , {templateUrl: 'partials/search.html'  , controller: 'SearchController'});
-        	$routeProvider.otherwise({redirectTo: '/view1'});
+        	$routeProvider.when('/view1', 
+        							{templateUrl: 'partials/partial1.html', 
+        						     controller:  'MyCtrl1'});
+        	
+        	$routeProvider.when('/search', 
+        							{templateUrl: 'partials/search.html'  , 
+        						     controller:  'SearchController' });
+        								    
+        	$routeProvider.when('/details/:itemId',
+        							{templateUrl: 'partials/details.html'  , 
+            				    	 controller:  'DetailsController'});
+       			
+//        	$routeProvider.otherwise({redirectTo: '/view1'});
     	}]);
 
 
