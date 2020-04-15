@@ -1,6 +1,6 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
+// Declare app level module which depends on filters, and services 
 //
 var ngdemo = angular.module('ngdemo', [
 					'ngdemo.filters', 
@@ -18,10 +18,10 @@ var ngdemo = angular.module('ngdemo', [
         						     controller:  'SearchController' });
         								    
         	$routeProvider.when('/details/:itemId',
-        							{templateUrl: 'partials/details.html'  , 
+        							{templateUrl: 'js/details/details.html'  , 
             				    	 controller:  'DetailsController'});
        			
-//        	$routeProvider.otherwise({redirectTo: '/view1'});
+        	$routeProvider.otherwise({redirectTo: '/view1'});
     	}]);
 
 

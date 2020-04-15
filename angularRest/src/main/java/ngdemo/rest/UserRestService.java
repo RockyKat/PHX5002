@@ -14,7 +14,8 @@ public class UserRestService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public User getDefaultUserInJSON() {
+    public User getDefaultUserInJSON() 
+    {
         UserService userService = new UserService();
         return userService.getDefaultUser();
     }
