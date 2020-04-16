@@ -9,6 +9,7 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String bmp;
 
     public String getFirstName() {
         return firstName;
@@ -24,5 +25,12 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    public String getBmp() {
+        return bmp;
+    }
+
+    public void setBmp(String bmp) {
+        this.bmp = bmp;
     }
 }

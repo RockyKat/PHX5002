@@ -8,6 +8,7 @@ public class UserService {
         User user = new User();
         user.setFirstName("JonFromREST");
         user.setLastName("DoeFromREST");
+        user.setBmp("rest.png");
         return user;
     }
 }

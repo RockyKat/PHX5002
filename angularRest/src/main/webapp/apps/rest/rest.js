@@ -8,5 +8,7 @@ app.controller('RestController', ['$scope', 'UserFactory',
 	    {
 	        $scope.firstname = userFactory.firstName;
 	        $scope.lastname = userFactory.lastName;
+	        $scope.bmp = userFactory.bmp;
+
 	    })
 }]);
