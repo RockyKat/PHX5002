@@ -20,7 +20,22 @@ var ngdemo = angular.module('ngdemo', [
         	$routeProvider.when('/details/:itemId',
         							{templateUrl: 'apps/details/details.html'  , 
             				    	 controller:  'DetailsController'});
-       			
+           	$routeProvider.when('/swap',
+           							{templateUrl: 'apps/swap/swap.html'  , 
+			    	 				controller:  'SwapController'});
+           	$routeProvider.when('/bootstrap',
+									{templateUrl: 'apps/bootstrap/bootstrap.html'  , 
+	 								controller:  'BootstrapController'});           	
+           	$routeProvider.when('/java',
+									{templateUrl: 'apps/java/java.html'  , 
+	 								controller:  'JavaController'});           	
+           	$routeProvider.when('/tomcat',
+									{templateUrl: 'apps/tomcat/tomcat.html'  , 
+	 								controller:  'TomcatController'});
+           	$routeProvider.when('/angular',
+									{templateUrl: 'apps/angular/angular.html'  , 
+	 								controller:  'AngularController'});
+           	
         	$routeProvider.otherwise({redirectTo: '/rest'});
     	}]);
 

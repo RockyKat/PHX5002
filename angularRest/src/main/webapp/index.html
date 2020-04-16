@@ -3,27 +3,89 @@
 	<head>
 	    <meta charset="utf-8">
 	    <title>PHX DEMO 2020</title>
-	    <link rel="stylesheet" content="width=device-width" href="css/app.css"/>
-	    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">	    
+	    <link rel="stylesheet" href="css/app.css">
+	    <link rel="stylesheet" href="lib/bootstrap-4.4.1/css/bootstrap.css">
+<!-- 	    <link rel="stylesheet" href="lib/bootstrap-4.4.1/css/bootstrap-grid.css"> -->
+<!-- 	    <link rel="stylesheet" href="lib/bootstrap-4.4.1/css/bootstrap-reboot.css"> -->
+	    
+	    <link rel="stylesheet" href="/lib/jquery/jquery.min.js">
 	    <link rel="stylesheet" href="css/style.css">
 	    
+<!-- 	</head> -->
+<!-- 	<body  class="bg-secondary" > -->
+
+
+		<script src="lib/jquery/jquery.min.js"></script>
+		<!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+		<script src="lib/bootstrap/popper.min.js"></script>
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+<!-- 		<script src="lib/bootstrap-4.1.1/js/bootstrap.js"></script>	 -->
+<!-- 		<script src="lib/bootstrap-4.1.1/js/bootstrap.bundle.js"></script>	 -->
+		
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 	</head>
 	<body  class="bg-secondary" >
-		<ul class="menu">
-		    <li><a href="#/view1">REST</a></li>
-		    <li><a href="#/search">SEARCH</a></li>	
-		</ul>
-		    
+
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		  <!-- Brand -->
+		  <a class="navbar-brand" href="#">PHX DEMO 2020</a>
+		
+		  <!-- Links -->
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="#/rest">REST</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="#/search">SEARCH</a>
+		    </li>
+		
+		    <!-- Dropdown -->
+		    <li class="nav-item dropdown">
+		      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+		        SWAP
+		      </a>
+		      <div class="dropdown-menu">
+		        <a class="dropdown-item" href="#/bootstrap">Bootstrap</a>
+		        <a class="dropdown-item" href="#/java">Java</a>
+		        <a class="dropdown-item" href="#/tomcat">Tomcat</a>
+		        <a class="dropdown-item" href="#/angular">AngularJS</a>
+		        
+		      </div>
+		    </li>
+		  </ul>
+		</nav>
+		<br>
+		  
+		<div class="container">
+		  <h3>PHX DEMO for software upgrade.</h3>
+		  <p>Testing software intigration.</p>
+		</div>
+
 		
 		<div ng-view></div>
+		
+		
+<!-- 	</head> -->
+<!-- 	<body  class="bg-secondary" > -->
+<!-- 		<ul class="menu"> -->
+<!-- 		    <li><a href="#/view1">REST</a></li> -->
+<!-- 		    <li><a href="#/search">SEARCH</a></li>	 -->
+<!-- 		</ul> -->
+		    
+		
+<!-- 		<div ng-view></div> -->
+		
+				
 			
 		<script src="lib/angular/angular.js"></script>
 		<script src="lib/angular/angular-resource.js"></script>
   		<script src="lib/angular/angular-route.min.js"></script>
 		
-		<script src="lib/jquery/jquery.min.js"></script>
-		<script src="lib/bootstrap/popper.min.js"></script>
-		<script src="lib/bootstrap/bootstrap.min.js"></script>
+<!-- 		<script src="lib/jquery/jquery.min.js"></script> -->
+<!-- 		<script src="lib/bootstrap/popper.min.js"></script> -->
+<!-- 		<script src="lib/bootstrap-4.1.1/js/bootstrap.min.js"></script> -->
 		
 		<script src="apps/app.js"></script>
 		<script src="apps/services.js"></script>
@@ -33,6 +95,12 @@
 		<script src="apps/details/details.js"></script>
 		<script src="apps/search/search.js"></script>
 		<script src="apps/rest/rest.js"></script>
+		<script src="apps/swap/swap.js"></script>
+		<script src="apps/bootstrap/bootstrap.js"></script>
+		<script src="apps/java/java.js"></script>
+		<script src="apps/tomcat/tomcat.js"></script>
+		<script src="apps/angular/angular.js"></script>
+		
 		
 		
 	</body>
