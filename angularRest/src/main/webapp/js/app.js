@@ -14,7 +14,7 @@ var ngdemo = angular.module('ngdemo', [
         						     controller:  'MyCtrl1'});
         	
         	$routeProvider.when('/search', 
-        							{templateUrl: 'partials/search.html'  , 
+        							{templateUrl: 'js/search/search.html'  , 
         						     controller:  'SearchController' });
         								    
         	$routeProvider.when('/details/:itemId',
