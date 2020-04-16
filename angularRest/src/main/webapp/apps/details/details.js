@@ -3,7 +3,7 @@
 //DETAILS Controller.
 app.controller('DetailsController', ['$scope', '$http', '$routeParams',
   function ($scope, $http, $routeParams) {
-    $http.get('js/data.json').then(function(response) {
+    $http.get('apps/data.json').then(function(response) {
       $scope.artists = response.data;
       $scope.artistOrder = 'name';
       $scope.whichItem = $routeParams.itemId;
