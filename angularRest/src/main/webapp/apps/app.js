@@ -35,6 +35,9 @@ var ngdemo = angular.module('ngdemo', [
            	$routeProvider.when('/angular',
 									{templateUrl: 'apps/angular/angular.html'  , 
 	 								controller:  'AngularController'});
+           	$routeProvider.when('/sql',
+           							{templateUrl: 'apps/sql/sql.html'  , 
+									controller:  'SQLController'});
            	
         	$routeProvider.otherwise({redirectTo: '/rest'});
     	}]);
