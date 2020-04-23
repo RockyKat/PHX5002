@@ -10,9 +10,9 @@
 <!-- </nav> -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#/sql">
-      	<img src="images/mysql.png" width="30" height="30" class="d-inline-block align-top" alt="">
-		MySQL</a>
+  <a class="navbar-brand" href="#/home">
+      	<img src="images/phx.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+		PHXDEMO</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,16 +22,16 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#/sql/query">Features</a>
+        <a class="nav-link" href="#/home/query">Control Panel</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#/sql/query">Action</a>
-          <a class="dropdown-item" href="#/sql">Another action</a>
-          <a class="dropdown-item" href="#/sql">Something else here</a>
+          <a class="dropdown-item" href="#/home/query">Action</a>
+          <a class="dropdown-item" href="#/home">Another action</a>
+          <a class="dropdown-item" href="#/home">Something else here</a>
         </div>
       </li>
     </ul>
@@ -44,16 +44,16 @@
       <div class="col-12 mt-3">
           <div class="card">
             <div class="card-header d-flex align-items-start justify-content-between">
-              <h1 class="card-title my-0">RESTful SERVICE: MySQL Demo.</h1>
+              <h1 class="card-title my-0">PHX DEMO.</h1>
 
             </div>
             <div class="card-body"
               ng-model="artists">
-              <h4 class="card-title text-dark mt-0">{{sqlfirstname}}</h4>
-              <img class="float-left mr-2 rounded"
-                ng-src="images/{{sqlbmp}}"
+              <h4 class="card-title text-dark mt-0">{{homefirstname}}</h4>
+              <img class="d-inline-block align-top float-left mr-2 rounded width="250" height="250"
+                ng-src="images/{{homebmp}}"
                 alt="Photo">
-              <div class="card-text text-secondary">{{sqllastname}}</div>
+              <div class="card-text text-secondary">{{homelastname}}</div>
             </div>
           </div>
       </div>

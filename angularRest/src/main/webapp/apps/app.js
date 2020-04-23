@@ -40,9 +40,15 @@ var ngdemo = angular.module('ngdemo', [
 									controller:  'SQLController'});
            	$routeProvider.when('/sql/query',
 									{templateUrl: 'apps/sql/query/sqlQuery.html'  , 
-									controller:  'SqlJsonController'});           	
+									controller:  'SqlJsonController'});     
+           	$routeProvider.when('/home',
+									{templateUrl: 'apps/home/home.html'  , 
+									controller:  'HomeController'});
+           	$routeProvider.when('/home/query',
+           							{templateUrl: 'apps/home/query/homeQuery.html'  , 
+									controller:  'HomeJsonController'});                 	
            	
-//        	$routeProvider.otherwise({redirectTo: '/rest'});
+        	$routeProvider.otherwise({redirectTo: '/home'});
     	}]);
 
 
