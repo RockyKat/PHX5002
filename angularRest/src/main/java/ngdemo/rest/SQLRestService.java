@@ -17,7 +17,9 @@ import javax.ws.rs.core.MediaType;
 @Path("/sql")
 public class SQLRestService {
 
+
     @GET
+	@Path("/demo")
     @Produces(MediaType.APPLICATION_JSON)
     public SQL getDefaultSQLInJSON() 
     {
@@ -25,7 +27,7 @@ public class SQLRestService {
         
          DBConnect connect = new DBConnect();
 		 connect.getData();    		 
-		 System.out.println("NEw SQLL");
+		 System.out.println("NEw SQL in SQL directory");
 		 
 		 connect.updateData();
 		 
@@ -40,22 +42,5 @@ public class SQLRestService {
         SQL mia = sqlService.getDefaultSQL();
         System.out.println("Returned mia");
         return mia;
-    }
-
-    @Path("/update")
-    @PUT
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.TEXT_PLAIN)
-    public SQL putDefaultSQLFromJson()
-    {
-    //@Path("/{id}"
-    //public Response getAllBooks(@PathParam("id") String bookId,String bookName){
-    //return Response.status(200)
-    //           .entity("Book id is : " + bookId + " and name is : " + bookName).build();
-    	SQLService sqlService = new SQLService();   
-    	DBConnect connect = new DBConnect();
-    	connect.updateData();
-    	
-    	 return sqlService.getDefaultSQL();
     }
 }
