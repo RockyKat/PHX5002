@@ -1,6 +1,7 @@
 package ngdemo.mysql;
 	
 	import java.sql.*;
+	import ngdemo.mysql.domain.SQL;
 
 	public class DBConnect {
 	    private Connection con;
@@ -114,5 +115,134 @@ package ngdemo.mysql;
 	    	}
 	    	
 	    }
+
+	    ///////////////////DEMO CODE THAT I KNOW WORKS ENDS HERE.
+	    //Basic CRUD for DEMO using Chris' model
+	    //Creates a new entry in the sakila customer table.
+	    public SQL createARowNotDemo(String firstname,String lastname)
+	    {
+	    	String firstName = firstname;
+	    	String lastName = lastname;
+	    	String email = firstName + "." + lastName + "@sakilacustomer.org";
+	    	SQL sql = new SQL();
+	    	double a = Math.random();
+	    	int addressId = (int)(a*600);
+	    	int storeId = 1;
+	    	boolean rtnval = false;
+	    	String newCustomer = "INSERT INTO customer (address_id,store_id,first_name, last_name, email)"
+	    			             + " values(?,?,?,?,?)";
+
+	    try
+	    {
+	     // create the mysql insert preparedstatement
+	       PreparedStatement preparedStmt = con.prepareStatement(newCustomer);
+	       preparedStmt.setInt (1, addressId);
+	       preparedStmt.setInt (2, storeId);
+	       preparedStmt.setString(3, firstName);
+	       preparedStmt.setString(4, lastName);
+	       preparedStmt.setString(5, email);
+
+	       // execute the preparedstatement
+	        rtnval = preparedStmt.execute();
+	        if (rtnval)
+	        {
+	        	sql.setFirstName(firstName);
+	        	sql.setLastName(lastName);
+	        	sql.setAddressId(addressId);
+	        	sql.setStoreId(storeId);
+	        	sql.setEmail(email);
+	        }
+	    	      
+	        con.close();
+	    }
+	    catch (Exception e)
+	    {
+	       System.out.println(e.getStackTrace());
+	     }	
+	    return sql;
+	  }
+	    
+	    public SQL readARowNotDemo(int primarykey)
+	    {	
+	    	SQL sql = new SQL();
+	    	try
+	    	{
+	    	   int primaryKey = primarykey;
+	    	   String findNewCustomer = "SELECT * FROM customer WHERE customer_id = "+primaryKey;
+	    	   rs = st.executeQuery(findNewCustomer);
+	    	   rs.next(); 		
+	    	   String firstname = rs.getString("first_name");
+  	    	   String lastname = rs.getString("last_name");
+  	    	   String email = rs.getString("email");
+  	    	   int storeid = rs.getInt("store_id");
+  	    	   int addressid = rs.getInt("address_id");
+  	    	   sql.setFirstName(firstname);
+  	    	   sql.setLastName(lastname);
+  	    	   sql.setEmail(email);
+  	    	   sql.setStoreId(storeid);
+  	    	   sql.setAddressId(addressid);
+  	    	   con.close();
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		System.out.println(e.getStackTrace());	    		
+	    	}
+	    	return sql;
+	    }
+
+	    //Change firstname and lastname of customer whose primary key is specified.
+	    //Also change email since it is FIRSTNAME.LASTNAME@sakilacustomer.org
+	    public SQL updateARowNotDemo(String firstName,String lastName, int primaryKey)
+	    {
+	    	SQL sql = new SQL();
+	    	String firstname = firstName;
+	    	String lastname = lastName;
+	    	int primarykey = primaryKey;
+	    	String email = firstname + "." + lastname + "@sakilacustomer.org";
+	    	String updateString = "UPDATE customer SET first_name = ?," +
+	    	                     "last_name = ?,  email = ? WHERE customer_id = ?";
+	    	try
+	    	{
+	    	   PreparedStatement pstmt = con.prepareStatement(updateString);
+	    	   pstmt.setString(1,firstname);
+	    	   pstmt.setString(2, lastname);
+	    	   pstmt.setString(3,email);
+	    	   pstmt.setInt(4, primarykey);
+	    	   int rtnval = pstmt.executeUpdate();
+	    	   sql.setFirstName(firstname);
+	    	   sql.setLastName(lastname);
+	    	   sql.setEmail(email);
+	    	   
+	    	   con.close();
+	    	}
+	    	catch(Exception e)
+	    	{
+	    		System.out.println(e.getStackTrace());
+	    	}
+	    	
+	    	return sql;
+	    }
+	    
+	    public SQL deleteARowNotDemo(int primaryKey)
+	    {
+	    	SQL sql = new SQL();
+	    	int primarykey = primaryKey;
+	    	String deleteString = "DELETE FROM customer WHERE customer_id = "+ primarykey;
+	    	try
+	    	{
+	    	   int rtnval = st.executeUpdate(deleteString);
+	    	   con.close();
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		System.out.println(e.getStackTrace());
+	    	}
+	    	
+	    	return sql;
+	    }
+	    
+	    
+	    
+	    			
 	    
 	}	

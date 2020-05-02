@@ -61,15 +61,17 @@ public class SQLRestService {
 	
 
 
-	//Create a row  given first and last name.
+	//Create a row  given first and last name...AFTER DEMO AND UNTESTED
 	   @GET
 	   @Path("/create/{varX}/{varY}")
 	   @Produces(MediaType.APPLICATION_JSON)
-	   public SQL createARow(@PathParam("varX") String firstname,@PathParam("varY") String lastname)
+	   public SQL createARow(@PathParam("varX") String firstName,@PathParam("varY") String lastName)
 	   {
+		  String lastname = lastName;
+		  String firstname = firstName;
 		  SQLService sqlService = new SQLService();
-		  int rtnval = sqlService.createARow(firstname,lastname);
-          return (SQL) null;
+		  SQL mySQL = sqlService.createARow(firstname,lastname);
+          return mySQL;
 	   }
 	   
 	   //Read a row given primary key.
@@ -78,15 +80,25 @@ public class SQLRestService {
 	   @Produces(MediaType.APPLICATION_JSON)
 	   public SQL readARow(@PathParam("primaryKey") int primaryKey)
 	   {
-		   return (SQL) null;
+		   //Read the desired row - sqlService call
+		   int primarykey = primaryKey;
+		   SQLService sqlService = new SQLService();
+		   SQL mySQL = sqlService.readARow(primarykey);
+		   return mySQL;
 	   }
 
 	   //Update a row given firstname, lastname, primary key
 	   @GET
 	   @Path("/update/{firstname}/{lastname}/{primaryKey}")
 	   @Produces(MediaType.APPLICATION_JSON)
-	   public SQL updateARow(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname, @PathParam("primaryKey") int primaryKey)			   
+	   public SQL updateARow(@PathParam("firstname") String firstName,@PathParam("lastname") String lastName, @PathParam("primaryKey") int primaryKey)			   
 	   {
+		 //Update the desired row - sqlService call
+		   String firstname = firstName;
+		   String lastname = lastName;
+		   int primarykey = primaryKey;
+		   SQLService sqlService = new SQLService();
+		   SQL mySQL = sqlService.updateARow(firstname,lastname,primarykey);
 	      return (SQL) null;  
 	   }
 
@@ -96,6 +108,7 @@ public class SQLRestService {
 	   @Produces(MediaType.APPLICATION_JSON)
 	   public SQL deleteARow(@PathParam("primaryKey") int primaryKey)
 	   {
+		   //Delete the desired row...sqlService call.
 	      return (SQL) null;   
 	   }
 			  
