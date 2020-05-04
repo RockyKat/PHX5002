@@ -13,7 +13,7 @@ import javax.ws.rs.PathParam;
 //ORIGINALLY: GETS DEFAULT DATABASE ENTRIES...ONLY COMMENT THIS STUFF OUT.
 //MODIFIED: CREATES, READS, UPDATES, DELETES entries from sakila customer database.
 
-@Path("/sql")
+@Path("/mysql")
 public class SQLRestService {
 
 /*    @GET
@@ -53,7 +53,7 @@ public class SQLRestService {
 			 System.out.println("DELETED A ROW");
 	        
 	        SQL mia = sqlService.getDefaultSQL();
-	        System.out.println("Returned mia");
+	        System.out.println("Returned miaa");
 	        return mia;
 	    }
 
@@ -102,6 +102,7 @@ public class SQLRestService {
 	      return (SQL) null;  
 	   }
 
+	   
 	   //Delete a row given primary key.
 	   @GET
 	   @Path("/delete/{primaryKey}")
