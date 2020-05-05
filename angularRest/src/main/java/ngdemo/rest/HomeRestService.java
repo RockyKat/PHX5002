@@ -3,10 +3,12 @@ package ngdemo.rest;
 import ngdemo.domain.Home;
 import ngdemo.domain.SQL;
 import ngdemo.mysql.DBConnectSwap;
+import ngdemo.mysql.service.SQLService;
 import ngdemo.service.HomeService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -40,11 +42,17 @@ public class HomeRestService {
     }
     
     @GET
-    @Path("/create")
+    @Path("/create/{varX}/{varY}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Home createARow()
+    public Home createARow(@PathParam("varX") String firstName,@PathParam("varY") String lastName)
     {
-    	return (Home) null;
+    	
+	    String lastname = lastName;
+		String firstname = firstName;
+		HomeService homeService = new HomeService();
+		//Home myHome = homeService.createARow(firstname,lastname);
+        //return myHome;
+		return (Home) null;
     }
     
     @GET
