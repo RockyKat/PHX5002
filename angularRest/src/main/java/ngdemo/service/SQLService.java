@@ -7,7 +7,7 @@ public class SQLService {
 	//ORIGINAL SQL SERVICE ... SETS FIELDS IN SQL OBJECT IT CREATES.
     public SQL getDefaultSQL() {
         SQL sql = new SQL();
-        sql.setFirstName("My SQL Server BLAH BLAH");
+        sql.setFirstName("My SQL Server");
         sql.setLastName("Demo Database Access.");
         sql.setBmp("mysql.png");
         return sql;

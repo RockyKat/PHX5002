@@ -1,4 +1,4 @@
-package ngdemo.mysql.domain;
+package ngdemo.phxsql.domain;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 // JAX-RS supports an automatic mapping from JAXB annotated class to XML and JSON
 //MODIFIED BY CGN: Is set up to return what is in CUSTOMER table of SAKILA database
 //which comes with MYSQL workbench
-public class SQL {
+public class PHXSQL {
 
 /*    private String firstName;
     private String lastName;

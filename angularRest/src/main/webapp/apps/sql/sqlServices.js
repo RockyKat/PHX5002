@@ -1,6 +1,6 @@
-//set this back to /ngdemo/rest/sql/demo to print PHXSQL table.
+//set this back to /ngdemo/rest/mysql/demo to print PHXSQL table.
 services.factory('SQLFactory', function ($resource) {
-    return $resource('/ngdemo/rest/sql/demo', {}, {
+    return $resource('/ngdemo/rest/swap/read/7', {}, {
         query: {
             method: 'GET',
             params: {},

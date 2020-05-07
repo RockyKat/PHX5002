@@ -1,8 +1,7 @@
 package ngdemo.service;
 
 import ngdemo.domain.Home;
-import ngdemo.mysql.DBConnect;
-import ngdemo.mysql.domain.SQL;
+
 
 public class HomeService {
 
