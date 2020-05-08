@@ -149,6 +149,7 @@ public PHXSWAP readARow(int primaryKey)
     	{
     	   int primaryKey = primarykey;
     	   String findNewCustomer = "SELECT * FROM phxswap WHERE PkgId = "+primaryKey;
+    	   
     	   rs = st.executeQuery(findNewCustomer);
     	   rs.next(); 	
     	   
@@ -175,5 +176,87 @@ public PHXSWAP readARow(int primaryKey)
     	}
 	    return sql;
     }
+    
+    //Update a parameter in an existing row of SWAP table.
+    public PHXSWAP updateARow(String whichTerm, String whichValue, int primaryKey)
+    {
+    	String whichterm = whichTerm;
+    	String whichvalue = whichValue;
+    	int primarykey = primaryKey;
+    	PHXSWAP rtnSQL = updateARowNotDemo(whichterm, whichvalue, primarykey);
+    	return rtnSQL;
+    }
+    
+	    private PHXSWAP updateARowNotDemo(String whichTerm,String whichValue, int primaryKey)
+	    {
+	    	PHXSWAP sql = new PHXSWAP();
+	    	String whichterm = whichTerm;
+	    	String whichvalue = whichValue;
+	    	int primarykey = primaryKey;
+	    	
+	    	try
+	    	{
+		        String updateString = "UPDATE phxswap SET "+whichTerm + " = ? WHERE PkgId = "+primaryKey;
+		    	PreparedStatement pstmt = con.prepareStatement(updateString);
+	    	   //Update the line.
+	    	    pstmt.setString(1,whichvalue);
+	    	   int rtnval = pstmt.executeUpdate();
+	    	   
+	    	   //Read the line and stuff PHXSWAP with it.
+	    	   String findNewCustomer = "SELECT * FROM phxswap WHERE PkgId = "+primaryKey;
+	    	   rs = st.executeQuery(findNewCustomer);
+	    	   rs.next(); 
+	    	   String CPD = rs.getString("CPD");
+	    	   String SLICE = rs.getString("SLICE");
+	    	   String PackageName = rs.getString("PackageName");
+	    	   String CurrentVersion = rs.getString("CurrentVersion");
+	    	   String SwapListVersion = rs.getString("SwapListVersion");
+	    	   String PkgStatus = rs.getString("PkgStatus");
+	    	   String Problems = rs.getString("Problems");
+	    	   sql.setCpd(CPD);
+	    	   sql.setSlice(SLICE);
+	    	   sql.setPkgStatus(PkgStatus);
+	    	   sql.setPackageName(PackageName);
+	    	   sql.setCurrentVersion(CurrentVersion);
+	    	   sql.setSwapListVersion(SwapListVersion);
+	    	   sql.setProblems(Problems);
+	    	   
+	    	   con.close();
+	    	}
+	    	catch(Exception e)
+	    	{
+	    		System.out.println(e.getStackTrace());
+	    	}
+	    	
+	    	return sql;
+	    }   
+	    
+	       public PHXSWAP deleteARow(int primaryKey)
+	        {
+	           int primarykey = primaryKey;
+	           
+	           PHXSWAP rtnSQL = deleteARowNotDemo(primarykey);
+	           
+	           return rtnSQL;
+	        }
+
+	    	    private PHXSWAP deleteARowNotDemo(int primaryKey)
+	    	    {
+	    	    	PHXSWAP sql = new PHXSWAP();
+	    	    	int primarykey = primaryKey;
+	    	    	String deleteString = "DELETE FROM phxswap WHERE PkgId = "+ primarykey;
+	    	    	try
+	    	    	{
+	    	    	   int rtnval = st.executeUpdate(deleteString);
+	    	    	   con.close();
+	    	    	}
+	    	    	catch (Exception e)
+	    	    	{
+	    	    		System.out.println(e.getStackTrace());
+	    	    	}
+	    	    	
+	    	    	return sql;
+	    	    }
+
 	    
 	}	

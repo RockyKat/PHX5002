@@ -2,7 +2,6 @@ package ngdemo.rest;
 
 import ngdemo.phxswap.domain.PHXSWAP;
 import ngdemo.phxswap.service.PHXSWAPService;
-import ngdemo.service.HomeService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -66,19 +65,29 @@ public class PHXSWAPRestService {
     	return myswap;
     }
     
+    //TESTED
     @GET
-    @Path("/update")
+    @Path("/update/{WhichTerm}/{ValueTerm}/{ix}")
     @Produces(MediaType.APPLICATION_JSON)
-    public PHXSWAP updateARow()
+    public PHXSWAP updateARow(@PathParam("WhichTerm") String term, @PathParam("ValueTerm") String value, @PathParam("ix") int primarykey)
     {
-    	return (PHXSWAP) null;
+        String whichTerm = term;
+        String whichValue = value;
+        int primaryKey = primarykey;
+        PHXSWAPService phxswapService = new PHXSWAPService();
+        PHXSWAP myswap = phxswapService.updateARow(whichTerm, whichValue, primaryKey);       		
+        
+    	return myswap;
     }
     
     @GET
-    @Path("/delete")
+    @Path("/delete/{ix}")
     @Produces(MediaType.APPLICATION_JSON)
-    public PHXSWAP deleteARow()
+    public PHXSWAP deleteARow(@PathParam("ix") int privateKey)
     {
+    	int privatekey = privateKey;
+    	PHXSWAPService phxswapService = new PHXSWAPService();
+    	PHXSWAP myswap = phxswapService.deleteARow(privatekey);
     	return (PHXSWAP) null;
     }    
     
