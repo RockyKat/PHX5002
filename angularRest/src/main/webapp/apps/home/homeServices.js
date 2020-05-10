@@ -1,5 +1,5 @@
 services.factory('HomeFactory', function ($resource) {
-    return $resource('/ngdemo/rest/home/readTable', {}, {
+    return $resource('/ngdemo/rest/home', {}, {
         query: {
             method: 'GET',
             params: {},

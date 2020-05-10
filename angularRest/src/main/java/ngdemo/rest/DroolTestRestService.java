@@ -1,29 +1,29 @@
 //Calls the Service class to do the real work
-package ngdemo.drooltest.rest;
+package ngdemo.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import ngdemo.drooltest.domain.DroolObject;
-import ngdemo.drooltest.service.DroolObjectService;
+import ngdemo.drooltest.domain.DroolTest;
+import ngdemo.drooltest.service.DroolTestService;
 
 
 
 @Path("/drool")
-public class DroolObjectRestService {
+public class DroolTestRestService {
 	
 	
     @GET
 	@Path("/demo")
     @Produces(MediaType.APPLICATION_JSON)
-    public DroolObject getDefaultSQLInJSON() 
+    public DroolTest getDefaultSQLInJSON() 
     {
-       DroolObjectService droolService = new DroolObjectService();
+       DroolTestService droolService = new DroolTestService();
        droolService.executeDrools();
     	
-       return (DroolObject) null;
+       return (DroolTest) null;
     }
 			
 	

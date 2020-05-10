@@ -1,6 +1,6 @@
 package ngdemo.drooltest.domain;
 
-public class DroolObject {
+public class DroolTest {
 
 	private String type;
 	private int discount;

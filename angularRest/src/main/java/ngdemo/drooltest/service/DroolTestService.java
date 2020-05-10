@@ -11,10 +11,10 @@ import org.drools.compiler.compiler.PackageBuilder;
 import org.drools.core.RuleBase;
 import org.drools.core.RuleBaseFactory;
 import org.drools.core.WorkingMemory;
-import ngdemo.drooltest.domain.DroolObject;
+import ngdemo.drooltest.domain.DroolTest;
 
 
-public class DroolObjectService 
+public class DroolTestService 
 {
 	
    public void executeDrools()
@@ -34,7 +34,7 @@ public class DroolObjectService
 
 		WorkingMemory workingMemory = ruleBase.newStatefulSession();
 
-		DroolObject product = new DroolObject();
+		DroolTest product = new DroolTest();
 		product.setType("gold");
 
 		workingMemory.insert(product);
@@ -43,7 +43,7 @@ public class DroolObjectService
 		System.out.println("The discount for the product " + product.getType()
 				+ " is " + product.getDiscount()); 
 		
-		DroolObject product2 = new DroolObject();
+		DroolTest product2 = new DroolTest();
 		product2.setType("diamond");
 		workingMemory.insert(product2);
 		workingMemory.fireAllRules();

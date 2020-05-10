@@ -8,9 +8,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-//I'm putting all of my testing of CRUD in here because I don't want to mess
-//with front end via C instructions.
-//I'll normalize things with him Tuesday.
 @Path("/sql")
 public class SQLRestService {
 

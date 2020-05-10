@@ -1,3 +1,5 @@
+//CHECKS JAVA 8 FEATURES. ALL METHODS PUBLIC BECAUSE I MAY 
+//WANT TO CALL THEM Individually.
 package ngdemo.jvaeight.service;
 
 import java.util.*;
@@ -6,6 +8,7 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 import java.time.*;
+import java.net.*;
 import java.util.function.BiFunction;  
 import javax.script.*;
 //Returns results of Java 8 feature tests.
@@ -53,6 +56,7 @@ public class JvaeightService {
    { 
        //lambda expression
        MyInterface fobj = (int x, int y)->System.out.println(x+y); 
+       System.out.println("\nTESTING LAMBDA FEATURE");
 
        System.out.print("The result = ");
        fobj.abstract_func(5,5); 
@@ -72,7 +76,7 @@ public class JvaeightService {
    
    public void TestForEach()
    {
-	   System.out.println("TESTING THE FOREACH METHOD");
+	   System.out.println("\nTESTING THE FOREACH FEATURE");
 	   List<String> subList = new ArrayList<String>();  
        subList.add("Maths");  
        subList.add("English");  
@@ -85,26 +89,37 @@ public class JvaeightService {
    
    public void TestOptional()
    {		 
-	        System.out.println("TESTING OPTIONAL CLASS");
+	        String aliceFile = "/com/rule/alice30.txt";	       
+	        System.out.println("\nTESTING OPTIONAL CLASS FEATURE");
 	        try
 	        {
-			String contents = new String(Files.readAllBytes(Paths.get("./alice30.txt")));
+	        InputStream resourceAsStream = getClass().getResourceAsStream(aliceFile);	
+	        InputStreamReader isReader = new InputStreamReader(resourceAsStream);
+	        //Creating a BufferedReader object
+	        BufferedReader reader = new BufferedReader(isReader);
+	        StringBuffer sb = new StringBuffer();
+	        String str;
+	        while((str = reader.readLine())!= null){
+	           sb.append(str);
+	        }
+	        String contents = sb.toString();
+	        //contents = new String(Files.readAllBytes(Paths.get("./alice30.txt")));
 			List<String> wordList = Arrays.asList(contents.split("\\PL+"));
 
 	         Optional<String> optionalValue = wordList.stream()
-	            .filter(s -> s.contains("fred"))
+	            .filter(s -> s.contains("red"))
 	            .findFirst();
-	         System.out.println(optionalValue.orElse("No word") + " contains fred");
+	         System.out.println(optionalValue.orElse("No word") + " contains red");
 
 	         Optional<String> optionalString = Optional.empty();
 	         String result = optionalString.orElse("N/A");
-	         System.out.println("result: " + result);
+	         System.out.println("Empty result: " + result);
 	         result = optionalString.orElseGet(() -> Locale.getDefault().getDisplayName());
-	         System.out.println("result: " + result);
-	            result = optionalString.orElseThrow(IllegalStateException::new);
-	            System.out.println("result: " + result);
+	         System.out.println("Locale result: " + result);
+	           // result = optionalString.orElseThrow(IllegalStateException::new);
+	            //System.out.println("result: " + result);
 	         }
-	         catch (Throwable t)
+	         catch (Exception t)
 	         {
 	            t.printStackTrace();
 	         }
@@ -113,7 +128,7 @@ public class JvaeightService {
    public void methodReferenceTester(int aV, int bV) {  
 	   int a = aV;
 	   int b = bV;
-	   System.out.println("TESTING METHOD REFERENCE FEATURE");
+	   System.out.println("\nTESTING METHOD REFERENCE FEATURE");
 	   BiFunction<Integer, Integer, Integer>adder = Arithmetic::add;  
 	   int result = adder.apply(a,b);  
 	   System.out.print("Addition of "+a+" and "+b+ " = ");
@@ -126,7 +141,7 @@ public class JvaeightService {
    
    public void testStreamApi()
    {
-   System.out.println("TESTING THE STREAM API");
+   System.out.println("\nTESTING THE STREAM API FEATURE");
    Stream.of("d2", "a2", "b1", "b3", "c")
    .sorted((s1, s2) -> {
        System.out.printf("sorted: %s; %s\n", s1, s2);
@@ -144,7 +159,7 @@ public class JvaeightService {
    }
    
    public void testLocalDateTime() {
-	      System.out.println("TESTING THE NEW JAVA DATE TIME API");
+	      System.out.println("\nTESTING THE NEW JAVA DATE TIME API FEATURE");
 	      // Get the current date and time
 	      LocalDateTime currentTime = LocalDateTime.now();
 	      System.out.println("Current DateTime: " + currentTime);
@@ -176,11 +191,13 @@ public class JvaeightService {
    
    public void testNashorn()
    {
-	   System.out.println("TESTING THE NASHORN JAVASCRIPT ENGINE");
+	   System.out.println("\nTESTING THE NASHORN JAVASCRIPT ENGINE FEATURE");
+	   System.out.println("EXECUTING JAVASCRIPT CODE:");
+	   System.out.println("function hi(){\nvar a = 'PROSPER'.toLowerCase(); \nmiddle(); \nprint('Live long and ' + a)\n}\n function middle(){\n var b = 1;\nfor(var i=0, max = 5; i<max;i++){\nb++;\n}\n print('b is '+b);\n}\nhi();\n\n");
 	   try {
 		    ScriptEngineManager factory = new ScriptEngineManager();
 		    ScriptEngine engine = factory.getEngineByName("nashorn");
-		    engine.eval("function hi(){\nvar a = 'PROSPER'.toLowerCase(); \nmiddle(); \nprint('Live long and' + a)}\n function middle(){\n var b = 1; for(var i=0, max = 5; i<max;i++){\nb++;\n}\n print('b is '+b);}hi();");
+		    engine.eval("function hi(){\nvar a = 'PROSPER'.toLowerCase(); \nmiddle(); \nprint('Live long and ' + a)}\n function middle(){\n var b = 1; for(var i=0, max = 5; i<max;i++){\nb++;\n}\n print('b is '+b);}hi();");
 		    } catch (Exception ex) {
 		            ex.printStackTrace();
 		        }
@@ -188,7 +205,7 @@ public class JvaeightService {
 	
    public void testBase64Coding()
    {
-	   System.out.println("TESTING THE BASE 64 ENCODE/DECODE");
+	   System.out.println("\nTESTING THE BASE 64 ENCODE/DECODE FEATURE");
 	   Base64.Encoder encoder = Base64.getEncoder();
 	   String normalString = "username:password";
 	   String encodedString = encoder.encodeToString( 
@@ -198,9 +215,10 @@ public class JvaeightService {
 	   Base64.Decoder decoder = Base64.getDecoder();
 	   byte[] decodedByteArray = decoder.decode(encodedString);
 	   //Verify the decoded string
-	   System.out.println(new String(decodedByteArray));
+	   System.out.println("Original term was "+new String(decodedByteArray));
    }
-   
+ 
+   //Test all parts of Java 8 new features and print output.
    public void doDemo()
    {
 	 TestLambdas();
@@ -211,6 +229,7 @@ public class JvaeightService {
 	 testLocalDateTime();
 	 testNashorn();
 	 testBase64Coding();	 
+	 System.out.println("\nEND OF JAVA 8 DEMO PROGRAM");
    }
 }
    
